@@ -9,7 +9,7 @@ and resolves a hit to the page where Webmulator runs its own emulator.
 | `stream` | Implemented — the game page, which is where the site embeds its player |
 | `importer` | **Deliberately absent.** See below |
 
-Modelled on `romarr-plugin-retrostic`, which is the reference plugin for
+Modelled on `rom-hub-retrostic`, which is the reference plugin for
 this family.
 
 ## The one thing that will bite you: 12 vs 39
@@ -182,7 +182,7 @@ varied, because that is where routing around a refusal starts.
 ## Install
 
 ```sh
-rom-hub plugin install https://git.moveweight.com/BlizzHacker/romarr-plugin-webmulator --ref v0.1.0
+rom-hub plugin install https://git.moveweight.com/BlizzHacker/rom-hub-webmulator --ref v0.1.0
 rom-hub search "bomberman" --platform saturn
 rom-hub stream webmulator sega-saturn/saturn-bomberman-e
 ```
@@ -198,7 +198,7 @@ To list it in ROMarr's **Hub → Plugins** catalogue:
 
 ```sh
 rom-hub catalog add moveweight-webmulator \
-  https://git.moveweight.com/BlizzHacker/romarr-plugin-webmulator/raw/tag/v0.1.0/catalog/plugins.json
+  https://git.moveweight.com/BlizzHacker/rom-hub-webmulator/raw/tag/v0.1.0/catalog/plugins.json
 rom-hub catalog refresh
 ```
 
