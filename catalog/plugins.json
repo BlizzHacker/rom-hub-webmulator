@@ -1,0 +1,36 @@
+{
+  "catalog_version": "1",
+  "updated": "2026-08-12",
+  "plugins": [
+    {
+      "slug": "webmulator",
+      "name": "Webmulator",
+      "author": "MoveWeight",
+      "repository": "https://git.moveweight.com/BlizzHacker/romarr-plugin-webmulator",
+      "install": "https://git.moveweight.com/BlizzHacker/romarr-plugin-webmulator",
+      "download": "https://git.moveweight.com/BlizzHacker/romarr-plugin-webmulator/archive/v0.1.0.tar.gz",
+      "version": "0.1.0",
+      "ref": "v0.1.0",
+      "updated": "2026-08-12",
+      "rpp_version": "1",
+      "capabilities": ["search", "stream"],
+      "platforms": [
+        "3do", "amiga", "arcade", "atari2600", "atari5200", "atari7800",
+        "colecovision", "gamegear", "gb", "gba", "gbc",
+        "genesis-slash-megadrive", "intellivision", "jaguar", "lynx", "msx",
+        "n64", "nds", "neo-geo-pocket", "nes",
+        "odyssey-2-slash-videopac-g7000", "pc-fx", "psx", "saturn", "sega32",
+        "segacd", "sharp-x68000", "sms", "snes", "turbografx16--1", "vectrex",
+        "virtualboy", "wonderswan", "wonderswan-color"
+      ],
+      "network": ["webmulator.com", "www.webmulator.com"],
+      "status": "caveat",
+      "search_only": false,
+      "key_required": false,
+      "in_tree": false,
+      "description": "Searches Webmulator through the site's own public GET search endpoint and its per-platform indexes, and resolves a hit to the game page where Webmulator runs its own emulator. Indexes metadata only; it does not download.",
+      "terms": "Webmulator hosts mixed game content and plays it in the browser. This provider indexes metadata the site publishes and links to pages the site presents to visitors. It grants no redistribution rights; operators are responsible for using it in accordance with applicable law and the source's terms.",
+      "comments": "No importer: Webmulator publishes no download control at all, and the only path to a ROM file is the rom_url parameter inside its emulator iframe, which is deliberately not used -- downloads.webmulator.com is not in the network allowlist. 37 of the 39 platforms on /games map to a ROMarr platform; neo-geo (ambiguous between neogeoaes and neogeomvs, 206 games) and fairchild-channel-f (no ROMarr platform, 13) are counted and skipped rather than guessed. The site's navigation dropdown lists only 12 of the 39 platforms; /games is the complete list."
+    }
+  ]
+}

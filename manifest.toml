@@ -1,0 +1,49 @@
+[plugin]
+slug        = "webmulator"
+name        = "Webmulator"
+version     = "0.1.0"
+rpp_version = "1"
+license     = "MIT"
+
+# No `importer`. Webmulator is a play-in-browser site: it publishes no
+# download control at all, and the only path to a ROM file is the `rom_url`
+# parameter inside the emulator iframe's `play.php` URL. Lifting that would
+# produce a working download by routing around the flow the site actually
+# offers -- the same call the Retrostic plugin made, and it is declined
+# here too. See README, "Why there is no importer".
+[capabilities]
+search = "webmulator.search:Search"
+stream = "webmulator.stream:Stream"
+
+# Exactly what is used, and nothing else. `www.webmulator.com` serves every
+# page this plugin reads or returns; the bare apex is listed because it
+# redirects to www and a redirect is not followed for us -- an operator
+# hand-testing a bare-apex URL should get a clean redirect rather than a
+# policy violation that looks like a bug.
+#
+# Deliberately absent: `downloads.webmulator.com`. That host runs the
+# emulator and its `play.php` query string carries a direct path to the
+# game's .zip. Declaring the host is the first step of reaching into it.
+# Not declaring it means the allowlist itself refuses, rather than relying
+# on nobody writing the code later.
+[permissions]
+network  = ["webmulator.com", "www.webmulator.com"]
+romm_api = []
+
+[config]
+collection = { type = "str", default = "Webmulator" }
+# Pages per surface. A ROM Hub search is interactive, so the default stops
+# at one: an unscoped query costs the site one page render, and a
+# platform-scoped one costs two -- its search page and one page of that
+# platform's index.
+max_pages = { type = "int", default = 1 }
+# Milliseconds between requests, across both surfaces. Webmulator's
+# robots.txt is `User-agent: * / Disallow:` and declares no Crawl-delay, so
+# this is our own restraint rather than a rule being followed.
+#
+# Milliseconds, and named `_ms`, because RPP v1 config types are
+# `str | int | bool | list[str] | secret` -- there is no `float`, and a
+# manifest that declares one is rejected outright by `parse_manifest`
+# rather than degrading. An integer count of milliseconds says the same
+# thing in a type the host actually has.
+request_delay_ms = { type = "int", default = 1500 }
