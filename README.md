@@ -7,6 +7,7 @@ and resolves a hit to the page where Webmulator runs its own emulator.
 |---|---|
 | `search` | Implemented — the site's own `GET /search.php`, plus its per-platform indexes when a platform is asked for |
 | `stream` | Implemented — the game page, which is where the site embeds its player |
+| ROMarr Capture | Detail pages index when size is present; search/list cards are local previews |
 | `importer` | **Deliberately absent.** See below |
 
 Modelled on `rom-hub-retrostic`, which is the reference plugin for
@@ -134,6 +135,11 @@ somebody later wrote the code. `tests/test_provider.py` asserts that a
 Every search result carries `downloadable: "false"` and `playable: "true"`
 in `extra`, so callers do not have to discover this per item.
 
+ROMarr Capture complements that contract: cards on search and platform pages
+are retained in the extension's local catalogue but not posted to ROMarr
+because they omit file size. Opening a game detail page allows an indexable
+row when the rendered `itemprop="fileSize"` metadata is present.
+
 ## Why the site's own results are filtered
 
 Webmulator's search returns its real matches and then **pads the page out
@@ -231,7 +237,7 @@ configurable zero would quietly remove it.
 ROM_HUB_SRC=/opt/rom-hub/src ROMARR_SRC=/opt/romarr pytest tests/ -q
 ```
 
-138 passing. `ROMARR_SRC` is what makes the platform-slug checks run rather
+142 passing. `ROMARR_SRC` is what makes the platform-slug checks run rather
 than skip; without it the suite still passes but the load-bearing test is
 skipped, which is the one thing here worth not skipping. (`conftest.py`
 also looks in `/opt/romarr` and in a sibling working copy, so on either the

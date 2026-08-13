@@ -28,7 +28,7 @@
       "search_only": false,
       "key_required": false,
       "in_tree": false,
-      "description": "Searches Webmulator through the site's own public GET search endpoint and its per-platform indexes, and resolves a hit to the game page where Webmulator runs its own emulator. Indexes metadata only; it does not download.",
+      "description": "Searches Webmulator and resolves its hosted player; ROMarr Capture keeps search/list cards as previews and indexes rendered detail pages when file size is present.",
       "terms": "Webmulator hosts mixed game content and plays it in the browser. This provider indexes metadata the site publishes and links to pages the site presents to visitors. It grants no redistribution rights; operators are responsible for using it in accordance with applicable law and the source's terms.",
       "comments": "No importer: Webmulator publishes no download control at all, and the only path to a ROM file is the rom_url parameter inside its emulator iframe, which is deliberately not used -- downloads.webmulator.com is not in the network allowlist. 37 of the 39 platforms on /games map to a ROMarr platform; neo-geo (ambiguous between neogeoaes and neogeomvs, 206 games) and fairchild-channel-f (no ROMarr platform, 13) are counted and skipped rather than guessed. The site's navigation dropdown lists only 12 of the 39 platforms; /games is the complete list."
     }
